@@ -33,6 +33,16 @@ client.on('message', message =>{ // ивент, когда приходит лю
     }
 })
 
+client.on('message', message =>{ // ивент, когда приходит любое сообщение в чат https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message
+    if (message.author.bot) return; // если автор сообщения - бот, ничего не происходит 
+    if (message.content == '!профиль') { // если пользователь написал "!профиль" 
+    let embed = new Discord.MessageEmbed() // создание ембед сообщения
+	embed.setDescription(`На сервере **Game Over**, ты можешь играть в игры, получать роли, общаться в чате и многое, многое другое! Тебе тут понравится!`) // описание ембеда
+    .setColor('RANDOM') // рандомный цвет ембеда
+    message.channel.send(embed) // отправляем сообщение в канал где была написана команда
+    }
+})	
+
 client.on('messageDelete', message =>{ // ивент, когда удаляется любое сообщение с сервера https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberAdd
     let embed = new Discord.MessageEmbed()
     .setTitle('Было удалено сообщение!')
