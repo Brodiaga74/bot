@@ -98,7 +98,7 @@ client.on('guildMemberRemove', member => { // ивент, когда польз�
   
 async function change() {
     let members = client.guilds.cache.get("747702266848608346").memberCount // сколько людей на сервере + указать айди своего сервера
-    client.channels.cache.get("775442750367596585").setName(`На сервере: ${members}`); // свой айди войса
+    client.channels.cache.get("775442750367596585").setName(`🔥┋Участников: ${members}!`); // свой айди войса
 }
 
 var interval = setInterval(function () { change(); }, 5000  ); // время обновления в миллисекундах
