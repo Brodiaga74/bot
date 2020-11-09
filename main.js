@@ -22,10 +22,10 @@ client.on('message', message =>{ // ивент, когда приходит лю
                     case 'dnd':
                         status = ':red_circle:не беспокоить'; break;
     }
-    embed.setDescription(`**Ваш ID: ${message.author.id}
-    Статус: ${status}
-    Дата создания аккаунта: ${message.author.createdAt.toLocaleDateString()}
-    Дата захода на сервер: ${message.member.joinedAt.toLocaleDateString()}
+    embed.setDescription(`Ваш ID: **${message.author.id}**
+    Статус: **${status}**
+    Дата создания аккаунта: **${message.author.createdAt.toLocaleDateString()}**
+    Дата захода на сервер: **${message.member.joinedAt.toLocaleDateString()}
     **`) // описание ембеда
     .setColor('RANDOM') // рандомный цвет ембеда
     .setThumbnail(message.author.avatarURL()) // вставляем в ембед аватарку пользователя
