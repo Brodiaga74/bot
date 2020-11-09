@@ -8,7 +8,7 @@ client.on('ready', () =>{ // ивент, когда бот запускаетс�
 
 client.on('message', message =>{ // ивент, когда приходит любое сообщение в чат https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message
     if (message.author.bot) return; // если автор сообщения - бот, ничего не происходит 
-    if (message.content == '!профиль') { // если пользователь написал "!профиль" 
+    if (message.content == '!userinfo') { // если пользователь написал "!профиль" 
     let embed = new Discord.MessageEmbed() // создание ембед сообщения
     .setTitle(message.author.username) // в тайтле имя автора 
     let status = ''
@@ -22,10 +22,10 @@ client.on('message', message =>{ // ивент, когда приходит лю
                     case 'dnd':
                         status = ':red_circle:не беспокоить'; break;
     }
-    embed.setDescription(`**Ваш дискорд айди: ${message.author.id}
-    Ваш статус: ${status}
+    embed.setDescription(`**Ваш ID: ${message.author.id}
+    Статус: ${status}
     Дата создания аккаунта: ${message.author.createdAt.toLocaleDateString()}
-    Дата входа на сервер: ${message.member.joinedAt.toLocaleDateString()}
+    Дата захода на сервер: ${message.member.joinedAt.toLocaleDateString()}
     **`) // описание ембеда
     .setColor('RANDOM') // рандомный цвет ембеда
     .setThumbnail(message.author.avatarURL()) // вставляем в ембед аватарку пользователя
@@ -35,7 +35,7 @@ client.on('message', message =>{ // ивент, когда приходит лю
 
 client.on('message', message =>{ // ивент, когда приходит любое сообщение в чат https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message
     if (message.author.bot) return; // если автор сообщения - бот, ничего не происходит 
-    if (message.content == '!профиль') { // если пользователь написал "!профиль" 
+    if (message.content == '!serverinfo') { // если пользователь написал "!профиль" 
     let embed = new Discord.MessageEmbed() // создание ембед сообщения
 	embed.setDescription(`На сервере **Game Over**, ты можешь играть в игры, получать роли, общаться в чате и многое, многое другое! Тебе тут понравится!`) // описание ембеда
     .setColor('RANDOM') // рандомный цвет ембеда
