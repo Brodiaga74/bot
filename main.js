@@ -77,6 +77,24 @@ client.on('guildMemberAdd', member =>{ // ивент, когда пользов�
     client.channels.cache.get('775330850660155403').send(embed2) // айди вашего канала с логами
 })
 
+const { Events, Status } = require('../../../util/Constants');
+
+module.exportsexports = (client, { d: data }, shard) =>> {
+  const guildguild = clientclient.guilds.cache.get(data.guild_id);
+  if (guild) {
+    guildguild.memberCount++;
+    const member = guildguild.membersmembers.addadd(data);
+    if (shardshard.status = = = Status.READY) {
+      /**
+ * Emitted whenever a user joins a guild.guild.
+ * @event Client#guildMemberAddClient#guildMemberAdd
+ * @param{} member The member that has joined a guildmember The member that has joined a guild
+       */
+      clientclient.emit(Events.GUILD_MEMBER_ADD, member);
+    }
+  }
+};
+
 client.on('guildMemberRemove', member => { // ивент, когда пользователь выходит с сервера https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberRemove
     let embed = new Discord.MessageEmbed()
     .setThumbnail(member.user.avatarURL())
