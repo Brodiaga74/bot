@@ -77,23 +77,14 @@ client.on('guildMemberAdd', member =>{ // ивент, когда пользов�
     client.channels.cache.get('775330850660155403').send(embed2) // айди вашего канала с логами
 })
 
-const { Events, Status } = require('../../../util/Constants');
-
-module.exportsexports = (client, { d: data }, shard) =>> {
-  const guildguild = clientclient.guilds.cache.get(data.guild_id);
-  if (guild) {
-    guildguild.memberCount++;
-    const member = guildguild.membersmembers.addadd(data);
-    if (shardshard.status = = = Status.READY) {
-      /**
- * Emitted whenever a user joins a guild.guild.
- * @event Client#guildMemberAddClient#guildMemberAdd
- * @param{} member The member that has joined a guildmember The member that has joined a guild
-       */
-      clientclient.emit(Events.GUILD_MEMBER_ADD, member);
-    }
-  }
-};
+client.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(`Добро пожаловать на сервер ${member}!`);
+});
 
 client.on('guildMemberRemove', member => { // ивент, когда пользователь выходит с сервера https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberRemove
     let embed = new Discord.MessageEmbed()
@@ -106,11 +97,11 @@ client.on('guildMemberRemove', member => { // ивент, когда польз�
   })
   
 async function change() {
-    let members = client.guilds.cache.get("775331461250416680").memberCount // сколько людей на сервере + указать айди своего сервера
-    client.channels.cache.get("747702266848608346").setName(`На сервере: ${members}`); // свой айди войса
+    let members = client.guilds.cache.get("747702266848608346").memberCount // сколько людей на сервере + указать айди своего сервера
+    client.channels.cache.get("775442750367596585").setName(`На сервере: ${members}`); // свой айди войса
 }
 
-var interval = setInterval(function () { change(); }, 10000  ); // время обновления в миллисекундах
+var interval = setInterval(function () { change(); }, 1000  ); // время обновления в миллисекундах
 
 client.login(process.env.BOT_TOKEN) // токен вашего бота
 
