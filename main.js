@@ -87,10 +87,6 @@ client.on('guildMemberRemove', member => { // ивент, когда польз�
     client.channels.cache.get('775330850660155403').send(embed) // айди вашего канала с логами
   })
   
-guildMember.ban({ days: 7, reason: 'They deserved it' })
-  .then(console.log)
-  .catch(console.error);
-
 async function change() {
     let members = client.guilds.cache.get("775331461250416680").memberCount // сколько людей на сервере + указать айди своего сервера
     client.channels.cache.get("747702266848608346").setName(`На сервере: ${members}`); // свой айди войса
